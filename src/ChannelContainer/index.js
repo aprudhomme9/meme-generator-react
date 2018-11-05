@@ -7,7 +7,8 @@ class ChannelContainer extends Component{
 	}
 	render(){
 		return(
-			<h1>test test</h1>
+			<h1>Channel</h1>
 			)
 	}
 }
+export default ChannelContainer;
