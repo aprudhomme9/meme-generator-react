@@ -12,7 +12,8 @@ class CreateModal extends Component{
 			topText: '',
 			bottomText: '',
 			imageId: '',
-			generatorId: ''
+			generatorId: '',
+			user: ''
 		}
 	}
 	closeModal = () => {
@@ -35,8 +36,18 @@ class CreateModal extends Component{
 			const meme = await fetch('http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID='+ this.state.generatorId + '&imageID='+ this.state.imageId + '&text0='+this.state.topText + '&text1=' + this.state.bottomText + '&apiKey=' + apiKey);
 			const parsedMeme = await meme.json();
 
-			console.log(parsedMeme);
+			console.log(parsedMeme.result.instanceImageUrl);
+			const user = await fetch('http://localhost:5000/api/v1/user');
+			console.log(user);
+			const parsedUser = await user.json();
 
+			await this.setState({
+				user: parsedUser.data
+			})
+			console.log(this.state.user);
+			// await fetch('http://localhost:5000/api/v1/memes', {
+
+			// })
 			
 		} catch (err) {
 			// res.send(err)
