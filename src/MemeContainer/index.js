@@ -39,7 +39,7 @@ class MemeContainer extends Component {
 		
 		return(
 			<div>
-				<h1>TEST</h1>
+				<h1>DANK</h1>
 				<MemeList images={this.state.images} />
 
 			</div>
