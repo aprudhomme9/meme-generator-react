@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MemeContainer from './MemeContainer';
+import HeaderApp from './Header';
 
 const mgUserName = 'aprudhomme';
 const mgPassword = 'Jaglax19';
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      	<HeaderApp />
         <MemeContainer />
       </div>
     );
