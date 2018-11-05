@@ -15,9 +15,9 @@ class HeaderApp extends Component{
 						<Link to='/profile'>Profile</Link><br/>
 						<Link to='/channels'>Channels</Link><br/>
 						<Link to='/leaderboard'>LeaderBoard</Link><br/>
-						<Input type="text" placeholder="Search Dank Memes.."/>
       		</Grid.Column>	
       	</Grid>
+						<Input divided textAlign='right' style={{ height: '100%' }} verticalAlign='top' stackable type="text" placeholder="Search Dank Memes.."/>
 				</nav>
 			</Header>
 		)
