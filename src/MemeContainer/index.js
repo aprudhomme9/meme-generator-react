@@ -17,7 +17,10 @@ class MemeContainer extends Component {
 	}
 	fetchImages = async () => {
 		try {
-			const images = await fetch('http://version1.api.memegenerator.net//Generators_Select_ByPopular?pageIndex=0&pageSize=25&days=14&apiKey=' + apiKey);
+			console.log('fetching');
+			const images = await fetch('http://localhost:5000/api/v1/images');
+			console.log(images);
+			// const images = await fetch('http://version1.api.memegenerator.net//Generators_Select_ByPopular?pageIndex=0&pageSize=25&days=14&apiKey=' + apiKey);	
 			const parsedImages = await images.json();
 
 			return parsedImages
@@ -28,19 +31,19 @@ class MemeContainer extends Component {
 	componentDidMount(){
 		this.fetchImages().then((images) => {
 			this.setState({
-				images: images.result
+				images: images.data
 			})
 		})
 	}
 	render(){
-		console.log(this.state.images);
+		
 		return(
 			<div>
 				<h1>TEST</h1>
 				<MemeList images={this.state.images} />
 
 			</div>
-
+ 
 		)
 	}
 }
