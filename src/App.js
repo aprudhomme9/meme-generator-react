@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MemeContainer from './MemeContainer';
 
+const mgUserName = 'aprudhomme';
+const mgPassword = 'Jaglax19';
+const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
 class App extends Component {
+	constructor(){
+		super()
+
+		this.state = {
+			memes: []
+		}
+	}
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <MemeContainer />
       </div>
     );
   }
 }
 
 export default App;
+
