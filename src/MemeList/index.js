@@ -12,7 +12,7 @@ class MemeList extends Component{
 	}
 	handleClick = (e) => {
 		this.setState({
-			imageUrl: e.currentTarget.imageUrl,
+			imageUrl: e.currentTarget.src,
 			showModal: true
 		})
 		console.log(e.currentTarget.name);
@@ -24,6 +24,7 @@ class MemeList extends Component{
 		})
 	}
 	render(){
+		// console.log(this.state.imageUrl);
 		const generatorList = this.props.images.map((image, i) => {
 			// console.log(image.imageUrl);g
 			return (
