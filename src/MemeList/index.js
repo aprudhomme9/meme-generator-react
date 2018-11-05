@@ -16,7 +16,7 @@ class MemeList extends Component{
 			showModal: true
 		})
 		console.log(e.currentTarget.name);
-		console.log(this.state.showModal);
+
 	}
 	closeModal = () => {
 		this.setState({
