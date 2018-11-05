@@ -50,7 +50,7 @@ class CreateModal extends Component{
 			<Modal open={this.props.open}>
 				<Header>Make it dank</Header>
 				<Modal.Content>
-					<p class="close" onClick={this.closeModal}>+</p>
+					<p className="close" onClick={this.closeModal}>+</p>
 					<img height='400' width='400' src={this.props.image}/><br/>
 					<Form onSubmit={this.handleSubmit}>
 						<Label>
