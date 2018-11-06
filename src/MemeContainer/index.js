@@ -23,7 +23,7 @@ class MemeContainer extends Component {
 
 			return parsedImages
 		} catch (err) {
-			// res.send(err)
+			return err
 		}
 	}
 	componentDidMount(){

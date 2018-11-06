@@ -25,8 +25,8 @@ class Login extends Component {
 			console.log('successful')
 			console.log(this.state)
 			this.props.history.push('/home')
+		}
 	}
-}
 	handleChange = (e) => {
 		this.setState({
 			[e.currentTarget.name]: e.currentTarget.value

@@ -39,21 +39,34 @@ class CreateModal extends Component{
 			const meme = await fetch('http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID='+ this.state.generatorId + '&imageID='+ this.state.imageId + '&text0='+this.state.topText + '&text1=' + this.state.bottomText + '&apiKey=' + apiKey);
 
 			const parsedMeme = await meme.json();
-			// Grabbing user from session
-			const user = await fetch('http://localhost:5000/api/v1/user');
 
-			const parsedUser = await user.json();
-
-			await this.setState({
-				user: parsedUser.data
-			})
 			
 		} catch (err) {
 			return err
 		}
 	
 	}
+	getUser = async () => {
+		try {
+			const user = await fetch('http://localhost:5000/api/v1/user');
+
+			// console.log(parsedUser, '<--parsed user');
+			const parsedUser = user.json();
+			JSON.stringify(parsedUser)
+			return parsedUser
+		} catch (err) {
+			// res.send(err)
+		}
+	}
+	componentDidMount(){
+		this.getUser().then((user) => {
+			this.setState({
+				user: user
+			})
+		})
+	}
 	render(){
+		console.log(this.state.user, '<--USER IN STATE');
 		return(
 			<Modal open={this.props.open}>
 				<Header>Make it dank</Header>
