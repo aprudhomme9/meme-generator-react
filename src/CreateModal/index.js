@@ -48,7 +48,7 @@ class CreateModal extends Component{
 	}
 	getUser = async () => {
 		try {
-			const user = await fetch('http://localhost:5000/api/v1/user');
+			const user = await fetch('http://localhost:5000/api/v1/user', {credentials: 'include'});
 
 			// console.log(parsedUser, '<--parsed user');
 			const parsedUser = user.json();
