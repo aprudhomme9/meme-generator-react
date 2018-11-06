@@ -8,8 +8,6 @@ import Logout from '../Logout'
 
 class HeaderApp extends Component{
 	render(){
-		console.log(this.props.history, 'HEADER PROPS')
-		console.log(this.context, 'IN THE HEADER APP')
 		return(
 			<Header>
 				<nav>
