@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
 import { Form, Label, Button } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
 
 class Logout extends Component {
-	
+		constructor(props){
+	    super(props);
+	    this.state = {
+	        username: '',
+	        password: ''
+	    }
+	}
 	handleSubmit = async (e) => {
 		e.preventDefault()
 
-		const logoutResponse = await fetch('http://localhost:5000/auth', {
-			method: 'POST',
+		const logoutResponse = await fetch('http://localhost:5000/auth/logout', {
+			method: 'GET',
 			credentials: 'include',
-			body: JSON.stringify(this.state),
+			// body: JSON.stringify(this.state),
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		})
+		console.log(this.context, 'CONTEXT~~~Å')
 		const parsedResponse = await logoutResponse.json()
+		console.log("Here",parsedResponse)
 		if(parsedResponse.data = 'logout successful'){
 			console.log('successful')
 			console.log(this.state)
+			console.log('THIS DOT PROPS', this.props)
 			this.props.history.push('/login')
 		}
-	}
-	handleChange = (e) => {
-		this.setState({
-			[e.currentTarget.name]: e.currentTarget.value
-		})
+		else {
+			console.log("here")
+		}
 	}
     render(){
+    	console.log(this.props, 'THIS DOT PROPS!!!!!!!!!!!')
         return(
         	<Form onSubmit={this.handleSubmit}>
           	<Button type="submit" color="blue">Logout</Button>
@@ -34,7 +43,7 @@ class Logout extends Component {
         )
     }
 }
-export default Logout;
+export default withRouter(Logout);
 		            	
 		            	
 		            	
