@@ -13,7 +13,8 @@ class CreateModal extends Component{
 			bottomText: '',
 			imageId: '',
 			generatorId: '',
-			user: ''
+			user: '',
+			imageUrl: ''
 		}
 	}
 	closeModal = () => {
@@ -38,7 +39,18 @@ class CreateModal extends Component{
 			// This creates the meme with the user's text input and image properties of selected (clicked) image
 			const meme = await fetch('http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID='+ this.state.generatorId + '&imageID='+ this.state.imageId + '&text0='+this.state.topText + '&text1=' + this.state.bottomText + '&apiKey=' + apiKey);
 
-			const parsedMeme = await meme.json();
+			const parsedMeme = await meme.json()
+
+			const addMeme = await fetch('http://localhost:5000/api/v1/memes', {
+				method: 'POST',
+				body: JSON.stringify({
+					imgUrl: parsedMeme.result.instanceImageUrl,
+					user: this.state.user
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
 
 			
 		} catch (err) {
@@ -66,6 +78,7 @@ class CreateModal extends Component{
 		})
 	}
 	render(){
+		console.log(this.state.imageUrl);
 		console.log(this.state.user, '<--USER IN STATE');
 		return(
 			<Modal open={this.props.open}>
