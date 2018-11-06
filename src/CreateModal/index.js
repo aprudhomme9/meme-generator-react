@@ -49,11 +49,7 @@ class CreateModal extends Component{
 			})
 			
 		} catch (err) {
-<<<<<<< HEAD
-			
-=======
 			return err
->>>>>>> f2bdd02015ae6966207dbc97edd1fae99e73c9ae
 		}
 	
 	}
