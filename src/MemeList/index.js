@@ -19,7 +19,6 @@ class MemeList extends Component{
 			imageId: e.currentTarget.name,
 			generatorId: e.currentTarget.id
 		})
-		console.log(e.currentTarget.name);
 
 	}
 	closeModal = () => {
@@ -28,12 +27,9 @@ class MemeList extends Component{
 		})
 	}
 	render(){
-		console.log(this.state);
 		const generatorList = this.props.images.map((image, i) => {
-			// console.log(image.imageUrl);g
 			return (
-					<img id={image.generatorID} name={image.imageID} onClick={this.handleClick} key={i} height='400' width='400' src={image.imageUrl} />
-					
+					<img id={image.generatorID} name={image.imageID} onClick={this.handleClick} key={i} height='400' width='400' src={image.imageUrl} />		
 			)
 		})
 
@@ -44,10 +40,6 @@ class MemeList extends Component{
 					{generatorList}	
 				</ul>
 			</div>
-			
-
-
-
 		)
 	}
 }
