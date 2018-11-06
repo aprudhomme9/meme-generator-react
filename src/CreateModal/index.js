@@ -50,7 +50,7 @@ class CreateModal extends Component{
 			// })
 			
 		} catch (err) {
-			// res.send(err)
+			
 		}
 	
 	}
