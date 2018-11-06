@@ -17,7 +17,9 @@ class MemeContainer extends Component {
 	}
 	fetchImages = async () => {
 		try {
-			const images = await fetch('http://localhost:5000/api/v1/images');
+			const images = await fetch('http://localhost:5000/api/v1/images', {
+				credentials: 'include'
+			});
 
 			const parsedImages = await images.json();
 
