@@ -21,7 +21,7 @@ class Login extends Component {
 			}
 		})
 		const parsedResponse = await loginResponse.json()
-		if(parsedResponse.data = 'login successful'){
+		if(parsedResponse.data){
 			console.log('successful')
 			console.log(this.state)
 			this.props.history.push('/home')
