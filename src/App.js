@@ -7,6 +7,7 @@ import ChannelContainer from './ChannelContainer'
 import ProfileContainer from './ProfileContainer'
 import HeaderApp from './Header';
 import Login from './Login';
+import Logout from './Logout'
 
 import {Route, Switch} from 'react-router-dom'
 
@@ -29,6 +30,7 @@ class App extends Component {
 		}
 	}
   render() {
+    console.log(this.props, this.context, 'IN THE APP')
     return (
       <div className="App">
         <HeaderApp />

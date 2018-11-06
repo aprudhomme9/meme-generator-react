@@ -4,13 +4,18 @@ import {Button, Grid, Label, Header, Input, Icon} from 'semantic-ui-react';
 
 import { Link } from 'react-router-dom'
 
+import Logout from '../Logout'
+
 class HeaderApp extends Component{
 	render(){
+		console.log(this.props.history, 'HEADER PROPS')
+		console.log(this.context, 'IN THE HEADER APP')
 		return(
 			<Header>
 				<nav>
 				<Grid columns={1} divided textAlign='left' style={{ height: '100%' }} verticalAlign='top' stackable>
           <Grid.Column>
+   					<Logout />
           	<Link to='/home'>Home</Link><br/>
 						<Link to='/profile'>Profile</Link><br/>
 						<Link to='/channels'>Channels</Link><br/>

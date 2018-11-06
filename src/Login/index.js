@@ -24,6 +24,7 @@ class Login extends Component {
 		if(parsedResponse.data){
 			console.log('successful')
 			console.log(this.state)
+			console.log('THIS DOT PROPS FROM LOGIN', this.props)
 			this.props.history.push('/home')
 		}
 	}
