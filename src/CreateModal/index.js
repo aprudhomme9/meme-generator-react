@@ -41,10 +41,13 @@ class CreateModal extends Component{
 
 			const parsedMeme = await meme.json()
 
+			console.log(parsedMeme, 'parsedMeme');
+
 			const addMeme = await fetch('http://localhost:5000/api/v1/memes', {
 				method: 'POST',
 				body: JSON.stringify({
 					imgUrl: parsedMeme.result.instanceImageUrl,
+					channel: parsedMeme.result.displayName,
 					user: this.state.user
 				}),
 				headers: {
@@ -64,7 +67,7 @@ class CreateModal extends Component{
 
 			// console.log(parsedUser, '<--parsed user');
 			const parsedUser = user.json();
-			JSON.stringify(parsedUser)
+			// JSON.stringify(parsedUser)
 			return parsedUser
 		} catch (err) {
 			// res.send(err)
@@ -73,7 +76,7 @@ class CreateModal extends Component{
 	componentDidMount(){
 		this.getUser().then((user) => {
 			this.setState({
-				user: user
+				user: user.data
 			})
 		})
 	}
