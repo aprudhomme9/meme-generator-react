@@ -20,22 +20,26 @@ class CreateModal extends Component{
 		this.props.closeModal();
 	}
 	handleChange = (e) => {
+		// Sets the top text and bottom text based on user input --> then flows into API call to generate meme
 		this.setState({
 			[e.currentTarget.name]: e.currentTarget.value
 		})
 	}
 	handleSubmit = async (e) => {
 		e.preventDefault();
+		// Close modal after submission
 		this.props.closeModal();
+		// Setting state with imageId and generator Id from props --> used when fetching created meme
 		try {
 			await this.setState({
 				imageId: this.props.imageId,
 				generatorId: this.props.generatorId
 			})
+			// This creates the meme with the user's text input and image properties of selected (clicked) image
 			const meme = await fetch('http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID='+ this.state.generatorId + '&imageID='+ this.state.imageId + '&text0='+this.state.topText + '&text1=' + this.state.bottomText + '&apiKey=' + apiKey);
 
 			const parsedMeme = await meme.json();
-
+			// Grabbing user from session
 			const user = await fetch('http://localhost:5000/api/v1/user');
 
 			const parsedUser = await user.json();
