@@ -8,6 +8,7 @@ import ProfileContainer from './ProfileContainer'
 import HeaderApp from './Header';
 import Login from './Login';
 import Logout from './Logout'
+import Register from './Register'
 
 import {Route, Switch} from 'react-router-dom'
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-import Register from '../Register'
+import { withRouter } from 'react-router-dom';
 
-class Login extends Component {
+class Register extends Component {
 	constructor(){
 	    super();
 	    this.state = {
@@ -10,10 +10,10 @@ class Login extends Component {
 	        password: ''
 	    }
 	}
-	handleLogin = async (e) => {
+	handleRegister = async (e) => {
 		e.preventDefault()
 
-		const loginResponse = await fetch('http://localhost:5000/auth', {
+		const registerResponse = await fetch('http://localhost:5000/auth/register', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),
@@ -21,7 +21,7 @@ class Login extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
-		const parsedResponse = await loginResponse.json()
+		const parsedResponse = await registerResponse.json()
 		if(parsedResponse.data){
 			console.log('successful')
 			console.log(this.state)
@@ -35,26 +35,22 @@ class Login extends Component {
 	}
     render(){
         return(
-        	<div>
-        	<Register />
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
-	        		<h3>Already have an account?</h3>
-	        		<h2>Login</h2>
-	            	<Form onSubmit={this.handleLogin}>
+	        		<h2>Register</h2>
+	            	<Form onSubmit={this.handleRegister}>
 		            	<Label>Username</Label>
 		            	<Form.Input type="text" name="username" onChange={this.handleChange}/>
 		            	<Label>Password</Label>
 		            	<Form.Input type="password" name="password" onChange={this.handleChange}/>
-		            	<Button type="submit" color="blue">Login</Button>
+		            	<Button type="submit" color="green">Register</Button>
 	            	</Form>
 	            </Segment>
             </Grid.Column>
            </Grid>
-           </div>
         )
     }
 }
-export default Login;
+export default withRouter(Register);
 
