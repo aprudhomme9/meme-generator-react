@@ -30,7 +30,6 @@ class App extends Component {
 		}
 	}
   render() {
-    console.log(this.props, this.context, 'IN THE APP')
     return (
       <div className="App">
         <HeaderApp />

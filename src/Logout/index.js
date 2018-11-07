@@ -27,7 +27,6 @@ class Logout extends Component {
 		if(parsedResponse.data = 'logout successful'){
 			console.log('successful')
 			console.log(this.state)
-			console.log('THIS DOT PROPS', this.props)
 			this.props.history.push('/login')
 		}
 		else {
