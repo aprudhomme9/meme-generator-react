@@ -31,6 +31,21 @@ class ProfileContainer extends Component {
 			
 		}
 	}
+	deleteMeme = async (e) => {
+		e.preventDefault()
+		try {
+			await fetch('http://localhost:5000/api/v1/memes/' + e.currentTarget.id, {
+				method: 'DELETE'
+			})
+		} catch (err) {
+			
+		}
+		this.fetchMemes().then((memes) => {
+			this.setState({
+				memes: memes.data
+			})
+		})
+	}
 	componentDidMount(){
 		this.fetchMemes().then((memes) => {
 			this.setState({
@@ -44,6 +59,7 @@ class ProfileContainer extends Component {
 		})
 	}
 	upvote = async (e) => {
+		e.preventDefault()
 		console.log(e.currentTarget.id);
 		console.log(this.state.memes[e.currentTarget.key]);
 
@@ -59,9 +75,32 @@ class ProfileContainer extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
+		this.fetchMemes().then((memes) => {
+			this.setState({
+				memes: memes.data
+			})
+		})
 	}
-	downvote = (e) => {
+	downvote = async (e) => {
+		e.preventDefault();
 		console.log(e.currentTarget.id, 'u suck');
+		const memeToEdit = this.state.memes.find((meme) => {
+			return meme._id === e.currentTarget.id
+			})
+		console.log(memeToEdit);
+		console.log(memeToEdit.downvotes);
+		await fetch('http://localhost:5000/api/v1/memes/' + e.currentTarget.id, {
+			method: 'PUT',
+			body: JSON.stringify({downvotes: memeToEdit.downvotes + 1}) ,
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		this.fetchMemes().then((memes) => {
+			this.setState({
+				memes: memes.data
+			})
+		})
 	}
     render(){
     	console.log(this.state.memes);
@@ -69,8 +108,11 @@ class ProfileContainer extends Component {
     		return (
     			<div className='meme'>
     				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Up</Button>
-    				<Button id={meme._id} color='red' onClick={this.downvote}>Down</Button>
+    				<p>Danks: {meme.upvotes}</p>
+    				<p>Whacks: {meme.downvotes}</p>
+    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
+    				<Button id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
+    				<Button id={meme._id} color='blue' onClick={this.deleteMeme}>Delete</Button>
     			</div>
     			)
     	})

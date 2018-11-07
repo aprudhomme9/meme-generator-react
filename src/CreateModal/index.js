@@ -49,7 +49,8 @@ class CreateModal extends Component{
 					imgUrl: parsedMeme.result.instanceImageUrl,
 					channel: parsedMeme.result.displayName,
 					user: this.state.user,
-					upvotes: 0
+					upvotes: 0,
+					downvotes: 0
 				}),
 				headers: {
 					'Content-Type': 'application/json'
