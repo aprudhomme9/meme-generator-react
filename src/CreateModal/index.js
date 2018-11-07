@@ -48,7 +48,8 @@ class CreateModal extends Component{
 				body: JSON.stringify({
 					imgUrl: parsedMeme.result.instanceImageUrl,
 					channel: parsedMeme.result.displayName,
-					user: this.state.user
+					user: this.state.user,
+					upvotes: 0
 				}),
 				headers: {
 					'Content-Type': 'application/json'
@@ -81,8 +82,6 @@ class CreateModal extends Component{
 		})
 	}
 	render(){
-		console.log(this.state.imageUrl);
-		console.log(this.state.user, '<--USER IN STATE');
 		return(
 			<Modal open={this.props.open}>
 				<Header>Make it dank</Header>

@@ -21,12 +21,10 @@ class Logout extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
-		console.log(this.context, 'CONTEXT~~~Å')
 		const parsedResponse = await logoutResponse.json()
-		console.log("Here",parsedResponse)
+
 		if(parsedResponse.data = 'logout successful'){
-			console.log('successful')
-			console.log(this.state)
+
 			this.props.history.push('/login')
 		}
 		else {
@@ -34,7 +32,7 @@ class Logout extends Component {
 		}
 	}
     render(){
-    	console.log(this.props, 'THIS DOT PROPS!!!!!!!!!!!')
+
         return(
         	<Form onSubmit={this.handleSubmit}>
           	<Button type="submit" color="blue">Logout</Button>
