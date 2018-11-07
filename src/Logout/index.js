@@ -10,7 +10,7 @@ class Logout extends Component {
 	        password: ''
 	    }
 	}
-	handleSubmit = async (e) => {
+	handleLogout = async (e) => {
 		e.preventDefault()
 
 		const logoutResponse = await fetch('http://localhost:5000/auth/logout', {
@@ -36,7 +36,7 @@ class Logout extends Component {
     render(){
     	console.log(this.props, 'THIS DOT PROPS!!!!!!!!!!!')
         return(
-        	<Form onSubmit={this.handleSubmit}>
+        	<Form onSubmit={this.handleLogout}>
           	<Button type="submit" color="blue">Logout</Button>
    				</Form>
         )

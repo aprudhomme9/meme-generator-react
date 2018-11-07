@@ -9,7 +9,7 @@ class Login extends Component {
 	        password: ''
 	    }
 	}
-	handleSubmit = async (e) => {
+	handleLogin = async (e) => {
 		e.preventDefault()
 
 		const loginResponse = await fetch('http://localhost:5000/auth', {
@@ -24,7 +24,6 @@ class Login extends Component {
 		if(parsedResponse.data){
 			console.log('successful')
 			console.log(this.state)
-			console.log('THIS DOT PROPS FROM LOGIN', this.props)
 			this.props.history.push('/home')
 		}
 	}
@@ -38,7 +37,7 @@ class Login extends Component {
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
-	            	<Form onSubmit={this.handleSubmit}>
+	            	<Form onSubmit={this.handleLogin}>
 		            	<Label>Username</Label>
 		            	<Form.Input type="text" name="username" onChange={this.handleChange}/>
 		            	<Label>Password</Label>
