@@ -6,19 +6,21 @@ import { Link } from 'react-router-dom'
 
 import Logout from '../Logout'
 
+import Login from '../Login'
+
 class HeaderApp extends Component{
 	render(){
+		// console.log(this.state.isLoggedIn, 'ISLOGGED')
 		return(
 			<Header>
 				<nav>
 				<Grid columns={1} divided textAlign='left' style={{ height: '100%' }} verticalAlign='top' stackable>
           <Grid.Column>
-   					<Logout />
+          	<Logout /> 
+          	{this.props.isLoggedIn ? <Logout /> : <Link to='/login'>Login/Register</Link> }<br/>
           	<Link to='/home'>Home</Link><br/>
 						<Link to='/profile'>Profile</Link><br/>
-						<Link to='/channels'>Channels</Link><br/>
 						<Link to='/leaderboard'>LeaderBoard</Link><br/>
-						<Link to='/users'>Meme Community</Link>
       		</Grid.Column>	
       	</Grid>
 

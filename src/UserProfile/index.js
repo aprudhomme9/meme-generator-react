@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'semantic-ui-react'
+import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 
 class UserProfile extends Component {
 	constructor(){
@@ -90,12 +90,18 @@ class UserProfile extends Component {
     	const memes = this.state.memes.map((meme, i) => {
     		return (
     			<div className='meme'>
-    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-    				<p>Danks: {meme.upvotes}</p>
-    				<p>Whacks: {meme.downvotes}</p>
-    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
-    				<Button id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
-    			</div>
+    			<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+        		<Grid.Column style={{maxWidth: 450}}>
+	        		<Segment>
+		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
+		    				<p>Danks: {meme.upvotes}</p>
+		    				<p>Whacks: {meme.downvotes}</p>
+		    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
+		    				<Button id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
+  						</Segment>
+	    		</Grid.Column>
+	    	</Grid>	
+    		</div>
     			)
     	})
     	

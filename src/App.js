@@ -18,7 +18,7 @@ import {Route, Switch} from 'react-router-dom'
 const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
 const Our404 = () => {
   return (
-    <div>No memes for you</div>
+    <div>NO MEMES FOR YOU</div>
     )
 }
 
@@ -29,6 +29,7 @@ class App extends Component {
 
 		this.state = {
 			memes: []
+    
 		}
 	}
   render() {
@@ -39,7 +40,6 @@ class App extends Component {
           <Route exact path="/login" component={Login}/>
           <Route exact path="/home" component={MemeContainer}/>
           <Route exact path="/leaderboard" component={LeaderBoardContainer}/>
-          <Route exact path="/channels" component={ChannelContainer}/>
           <Route exact path="/profile" component={ProfileContainer}/>
           <Route exact path='/users' component={UserContainer}/>
           <Route component={Our404}/>

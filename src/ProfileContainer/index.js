@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button} from 'semantic-ui-react'
+import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 
 class ProfileContainer extends Component {
 	constructor(){
@@ -101,11 +101,28 @@ class ProfileContainer extends Component {
     	console.log(this.state.memes);
     	const memes = this.state.memes.map((meme, i) => {
     		return (
+// <<<<<<< HEAD
+// 		    	<div className='meme'>
+//     				<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+//         			<Grid.Column style={{maxWidth: 450}}>
+// 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
+// 		    				<Button  fluid icon="arrow up"key={i} id={meme._id} color='green' onClick={this.upvote}></Button>
+// 		    				<Button fluid icon="arrow down"id={meme._id} color='red' onClick={this.downvote}></Button>
+// 		    			</Grid.Column>
+// 		    		</Grid>
+// 		    	</div>
+// =======
     			<div className='meme'>
-    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-    				<p>Danks: {meme.upvotes}</p>
-    				<p>Whacks: {meme.downvotes}</p>
-    				<Button id={meme._id} color='blue' onClick={this.deleteMeme}>Delete</Button>
+    			<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+        		<Grid.Column style={{maxWidth: 450}}>
+	        		<Segment>
+		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
+		    				<p>Danks: {meme.upvotes}</p>
+		    				<p>Whacks: {meme.downvotes}</p>
+		    				<Button id={meme._id} color='blue' onClick={this.deleteMeme}>Delete</Button>
+  						</Segment>
+	    		</Grid.Column>
+	    	</Grid>	
     			</div>
     			)
     	})

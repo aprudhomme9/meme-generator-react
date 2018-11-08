@@ -35,7 +35,7 @@ class Logout extends Component {
 
         return(
         	<Form onSubmit={this.handleLogout}>
-          	<Button type="submit" color="blue">Logout</Button>
+          	<Button type="submit" color="red">Logout</Button>
    				</Form>
         )
     }
