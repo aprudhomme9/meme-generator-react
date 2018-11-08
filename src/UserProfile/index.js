@@ -45,7 +45,7 @@ class UserProfile extends Component {
 				memes: memes.data
 			})
 		})
-		console.log(this.state.memes, '<--memes in state');
+
 	}
 	upvote = async (e) => {
 		e.preventDefault()
@@ -87,8 +87,6 @@ class UserProfile extends Component {
 		})
 	}
     render(){
-    	console.log(this.props.user);
-    	console.log(this.state.memes);
     	const memes = this.state.memes.map((meme, i) => {
     		return (
     			<div className='meme'>
