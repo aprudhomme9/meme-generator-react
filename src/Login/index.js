@@ -14,7 +14,9 @@ class Login extends Component {
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
+
 		const loginResponse = await fetch(serverUrl + 'auth', {
+
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),
@@ -24,8 +26,7 @@ class Login extends Component {
 		})
 		const parsedResponse = await loginResponse.json()
 		if(parsedResponse.data){
-			console.log('successful')
-			console.log(this.state)
+
 			this.props.history.push('/home')
 		}
 	}
@@ -40,7 +41,7 @@ class Login extends Component {
 		})
 	}
     render(){
-    	console.log(this.state.isLoggedIn)
+
         return(
         	<div>
         	

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-import serverUrl from '../serverUrl'
+import serverUrl from '../serverUrl.js'
+
+
 class UserList extends Component{
 	constructor(){
 		super()

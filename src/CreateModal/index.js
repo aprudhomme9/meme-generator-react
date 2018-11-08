@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 
 import { Modal, Form, Button, Label, Header } from 'semantic-ui-react';
+import serverUrl from '../serverUrl.js'
+
+const apiKey = process.env.API_KEY;
+
 
 import serverUrl from '../serverUrl'
 
 const apiKey = process.env.API_KEY;
+
 
 class CreateModal extends Component{
 	constructor(){
@@ -67,10 +72,13 @@ class CreateModal extends Component{
 		try {
 			const user = await fetch(serverUrl + 'api/v1/user', {credentials: 'include'});
 
+			
 			const parsedUser = user.json();
+			
 			return parsedUser
 		} catch (err) {
-			console.log(err)
+			
+
 		}
 	}
 	componentDidMount(){

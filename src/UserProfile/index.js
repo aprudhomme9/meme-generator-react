@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-import serverUrl from '../serverUrl'
+
+import serverUrl from '../serverUrl';
 
 class UserProfile extends Component {
 	constructor(){
@@ -25,7 +26,7 @@ class UserProfile extends Component {
 	}
 	fetchMemes = async () => {
 		const userId = this.props.user._id;
-		console.log(userId, '<---USER ID');
+
 		try {
 			const fetchedMemes = await fetch(serverUrl + 'api/v1/memes/profile/' + this.props.user._id, {credentials: 'include'});
 			console.log(fetchedMemes, '<---GRABBING THE MEMES');

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Label, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
-import serverUrl from '../serverUrl'
+
+import serverUrl from '../serverUrl.js'
+
 class Logout extends Component {
 		constructor(props){
 	    super(props);

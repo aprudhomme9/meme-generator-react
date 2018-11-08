@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import UserList from '../UserList'
 import UserProfile from '../UserProfile'
 import {Button} from 'semantic-ui-react'
-import serverUrl from '../serverUrl'
+
+import serverUrl from '../serverUrl.js'
+
 class UserContainer extends Component{
 	constructor(){
 		super()
