@@ -9,6 +9,7 @@ import HeaderApp from './Header';
 import Login from './Login';
 import Logout from './Logout'
 import Register from './Register'
+import UserContainer from './UserContainer'
 
 import {Route, Switch} from 'react-router-dom'
 
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/leaderboard" component={LeaderBoardContainer}/>
           <Route exact path="/channels" component={ChannelContainer}/>
           <Route exact path="/profile" component={ProfileContainer}/>
+          <Route exact path='/users' component={UserContainer}/>
           <Route component={Our404}/>
 
         </Switch>

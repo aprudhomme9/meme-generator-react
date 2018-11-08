@@ -39,9 +39,7 @@ class CreateModal extends Component{
 			// This creates the meme with the user's text input and image properties of selected (clicked) image
 			const meme = await fetch('http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID='+ this.state.generatorId + '&imageID='+ this.state.imageId + '&text0='+this.state.topText + '&text1=' + this.state.bottomText + '&apiKey=' + apiKey);
 
-			const parsedMeme = await meme.json()
-
-			console.log(parsedMeme, 'parsedMeme');
+			const parsedMeme = await meme.json();
 
 			const addMeme = await fetch('http://localhost:5000/api/v1/memes', {
 				method: 'POST',
