@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import UserList from '../UserList'
 import UserProfile from '../UserProfile'
 import {Button} from 'semantic-ui-react'
+import serverUrl from '../serverUrl.js'
 class UserContainer extends Component{
 	constructor(){
 		super()
@@ -13,7 +14,7 @@ class UserContainer extends Component{
 	}
 	handleClick = async (id) => {
 		const userIndex = id
-		const foundUser = await fetch(process.env.EXPRESS_URL + 'api/v1/user/' + userIndex);
+		const foundUser = await fetch(serverUrl + 'api/v1/user/' + userIndex);
 		const parsedUser = await foundUser.json()
 		
 		this.setState({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-
+import serverUrl from '../serverUrl';
 class UserProfile extends Component {
 	constructor(){
 		super()
@@ -13,7 +13,7 @@ class UserProfile extends Component {
 	}
 	fetchUser = async () => {
 		try {
-			const currentUser = await fetch(process.env.EXPRESS_URL + 'api/v1/user', {credentials: 'include'});
+			const currentUser = await fetch(serverUrl + 'api/v1/user', {credentials: 'include'});
 			const parsedUser = await currentUser.json();
 
 			return parsedUser;	
@@ -26,7 +26,7 @@ class UserProfile extends Component {
 		const userId = this.props.user._id;
 
 		try {
-			const fetchedMemes = await fetch(process.env.EXPRESS_URL + 'api/v1/memes/profile/' + this.props.user._id, {credentials: 'include'});
+			const fetchedMemes = await fetch(serverUrl + 'api/v1/memes/profile/' + this.props.user._id, {credentials: 'include'});
 			console.log(fetchedMemes, '<---GRABBING THE MEMES');
 			const parsedMemes = await fetchedMemes.json()
 
@@ -39,7 +39,7 @@ class UserProfile extends Component {
 	deleteMeme = async (e) => {
 		e.preventDefault()
 		try {
-			await fetch(process.env.EXPRESS_URL + 'api/v1/memes/' + e.currentTarget.id, {
+			await fetch(serverUrl + 'api/v1/memes/' + e.currentTarget.id, {
 				method: 'DELETE'
 			})
 		} catch (err) {
@@ -77,7 +77,7 @@ class UserProfile extends Component {
 			return meme._id === e.currentTarget.id
 			})
 
-		await fetch(process.env.EXPRESS_URL + 'api/v1/memes/' + e.currentTarget.id, {
+		await fetch(serverUrl + 'api/v1/memes/' + e.currentTarget.id, {
 			method: 'PUT',
 			body: JSON.stringify({upvotes: memeToEdit.upvotes + 1}) ,
 			headers: {
@@ -100,7 +100,7 @@ class UserProfile extends Component {
 		const memeToEdit = this.state.memes.find((meme) => {
 			return meme._id === e.currentTarget.id
 			})
-		await fetch(process.env.EXPRESS_URL + 'api/v1/memes/' + e.currentTarget.id, {
+		await fetch(serverUrl + 'api/v1/memes/' + e.currentTarget.id, {
 			method: 'PUT',
 			body: JSON.stringify({downvotes: memeToEdit.downvotes + 1}) ,
 			headers: {

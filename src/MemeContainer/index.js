@@ -4,8 +4,10 @@ import MemeList from '../MemeList';
 import Login from '../Login'
 
 import Search from '../Search'
+import serverUrl from '../serverUrl.js'
 
 const apiKey = process.env.API_KEY;
+
 
 
 class MemeContainer extends Component {
@@ -20,7 +22,7 @@ class MemeContainer extends Component {
 		const userSearch = search;
 
 		try {
-			const images = await fetch(process.env.EXPRESS_URL + 'api/v1/images/' + userSearch, {
+			const images = await fetch(serverUrl + 'api/v1/images/' + userSearch, {
 				credentials: 'include'
 			});
 
