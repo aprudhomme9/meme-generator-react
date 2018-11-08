@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import CreateModal from '../CreateModal'
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
+const apiKey = process.env.API_KEY;
 class MemeList extends Component{
 	constructor(){
 		super();

@@ -11,7 +11,7 @@ class UserList extends Component{
 	}
 	fetchUsers = async () => {
 		try {
-			const foundUsers = await fetch('http://localhost:5000/api/v1/user/all')
+			const foundUsers = await fetch(process.env.EXPRESS_URL + 'api/v1/user/all')
 			const parsedUsers = await foundUsers.json();
 
 			return parsedUsers

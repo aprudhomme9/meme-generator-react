@@ -13,7 +13,7 @@ class UserContainer extends Component{
 	}
 	handleClick = async (id) => {
 		const userIndex = id
-		const foundUser = await fetch('http://localhost:5000/api/v1/user/' + userIndex);
+		const foundUser = await fetch(process.env.EXPRESS_URL + 'api/v1/user/' + userIndex);
 		const parsedUser = await foundUser.json()
 		
 		this.setState({

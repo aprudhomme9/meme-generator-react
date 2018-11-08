@@ -15,7 +15,7 @@ import {Route, Switch} from 'react-router-dom'
 
 // const mgUserName = 'aprudhomme';
 // const mgPassword = 'Jaglax19';
-const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
+const apiKey = process.env.API_KEY;;
 const Our404 = () => {
   return (
     <div>NO MEMES FOR YOU</div>
