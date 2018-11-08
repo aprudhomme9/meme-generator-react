@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { Modal, Form, Button, Label, Header } from 'semantic-ui-react';
 
-const apiKey = process.env.API_KEY;;
+const apiKey = process.env.API_KEY;
 
 class CreateModal extends Component{
 	constructor(){
@@ -65,9 +65,7 @@ class CreateModal extends Component{
 		try {
 			const user = await fetch(process.env.EXPRESS_URL + 'api/v1/user', {credentials: 'include'});
 
-			// console.log(parsedUser, '<--parsed user');
 			const parsedUser = user.json();
-			// JSON.stringify(parsedUser)
 			return parsedUser
 		} catch (err) {
 			// res.send(err)

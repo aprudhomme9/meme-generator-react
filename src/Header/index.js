@@ -22,13 +22,12 @@ class HeaderApp extends Component{
 
           	<Link to='/home'>Home</Link><br/>
 						<Link to='/profile'>Profile</Link><br/>
-<<<<<<< HEAD
+
 						<Link to='/leaderboard'>LeaderBoard</Link><br/>
 						<Link to='/users'>Meme Community</Link><br/>
-=======
+
 						<Link to='/leaderboard'>Fire Memes</Link><br/>
 						<Link to='/users'>Meme Community</Link>
->>>>>>> 04a03fe54536a6f63ec1c1a641e26e5dcf9b2dea
       		</Grid.Column>	
       	</Grid>
 
