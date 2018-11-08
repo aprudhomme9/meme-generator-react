@@ -21,7 +21,7 @@ class HeaderApp extends Component{
 						<Link to='/users'>Meme Community</Link>
       		</Grid.Column>	
       	</Grid>
-						<Input divided textAlign='right' style={{ height: '100%' }} verticalAlign='top' stackable type="text" placeholder="Search Dank Memes.."/>
+
 				</nav>
 			</Header>
 		)
