@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import {Button, Grid} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 
-class ProfileContainer extends Component {
+class UserProfile extends Component {
 	constructor(){
 		super()
 
 		this.state = {
 			memes: [],
-			memeToEdit: '',
-			user: ''
+			memeToEdit: ''
 		}
 	}
 	fetchMemes = async () => {
+		const userId = this.props.user._id;
+		console.log(userId, '<---USER ID');
 		try {
-			const fetchedMemes = await fetch('http://localhost:5000/api/v1/memes', {credentials: 'include'});
-
+			const fetchedMemes = await fetch('http://localhost:5000/api/v1/memes/profile/' + this.props.user._id, {credentials: 'include'});
+			console.log(fetchedMemes, '<---GRABBING THE MEMES');
 			const parsedMemes = await fetchedMemes.json()
 
 			return parsedMemes
@@ -22,16 +23,7 @@ class ProfileContainer extends Component {
 			
 		}
 	}
-	fetchUser = async () => {
-		try {
-			const currentUser = await fetch('http://localhost:5000/api/v1/user', {credentials: 'include'});
-			const parsedUser = await currentUser.json();
-
-			return parsedUser;
-		} catch (err) {
-			
-		}
-	}
+	
 	deleteMeme = async (e) => {
 		e.preventDefault()
 		try {
@@ -48,16 +40,12 @@ class ProfileContainer extends Component {
 		})
 	}
 	componentDidMount(){
-		this.fetchUser().then((user) => {
-			this.setState({
-				user: user.data.username
-			})
-		})
 		this.fetchMemes().then((memes) => {
 			this.setState({
 				memes: memes.data
 			})
 		})
+		console.log(this.state.memes, '<--memes in state');
 	}
 	upvote = async (e) => {
 		e.preventDefault()
@@ -92,42 +80,34 @@ class ProfileContainer extends Component {
 			}
 		})
 		this.fetchMemes().then((memes) => {
+			console.log(memes, '<---grabbing the memes');
 			this.setState({
 				memes: memes.data
 			})
 		})
 	}
     render(){
+    	console.log(this.props.user);
     	console.log(this.state.memes);
     	const memes = this.state.memes.map((meme, i) => {
     		return (
-// <<<<<<< HEAD
-// 		    	<div className='meme'>
-//     				<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
-//         			<Grid.Column style={{maxWidth: 450}}>
-// 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-// 		    				<Button  fluid icon="arrow up"key={i} id={meme._id} color='green' onClick={this.upvote}></Button>
-// 		    				<Button fluid icon="arrow down"id={meme._id} color='red' onClick={this.downvote}></Button>
-// 		    			</Grid.Column>
-// 		    		</Grid>
-// 		    	</div>
-// =======
     			<div className='meme'>
     				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
     				<p>Danks: {meme.upvotes}</p>
     				<p>Whacks: {meme.downvotes}</p>
-    				<Button id={meme._id} color='blue' onClick={this.deleteMeme}>Delete</Button>
+    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
+    				<Button id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
     			</div>
     			)
     	})
     	
         return(
         	<div>
-        		<h1>{this.state.user}'s Profile</h1>
+        		<h1>{this.props.user.username}'s Profile</h1>
             	{memes}
         	</div>
             
         )
     }
 }
-export default ProfileContainer;
+export default UserProfile;
