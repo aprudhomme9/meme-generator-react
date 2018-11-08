@@ -19,15 +19,10 @@ class HeaderApp extends Component{
           	<Logout /> 
           	{this.props.isLoggedIn ? <Logout /> : <Link to='/login'>Login/Register</Link> }<br/>
           	<Link to='/register'>register</Link><br/>
-
           	<Link to='/home'>Home</Link><br/>
 						<Link to='/profile'>Profile</Link><br/>
-
 						<Link to='/leaderboard'>LeaderBoard</Link><br/>
 						<Link to='/users'>Meme Community</Link><br/>
-
-						<Link to='/leaderboard'>Fire Memes</Link><br/>
-						<Link to='/users'>Meme Community</Link>
       		</Grid.Column>	
       	</Grid>
 
