@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
-
+import serverUrl from '../serverUrl'
 class UserList extends Component{
 	constructor(){
 		super()
@@ -11,7 +11,7 @@ class UserList extends Component{
 	}
 	fetchUsers = async () => {
 		try {
-			const foundUsers = await fetch(process.env.EXPRESS_URL + 'api/v1/user/all')
+			const foundUsers = await fetch(serverUrl + 'api/v1/user/all')
 			const parsedUsers = await foundUsers.json();
 
 			return parsedUsers

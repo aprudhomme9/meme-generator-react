@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
+import serverUrl from '../serverUrl'
 
 class Register extends Component {
 	constructor(){
@@ -13,7 +14,7 @@ class Register extends Component {
 	handleRegister = async (e) => {
 		e.preventDefault()
 
-		const registerResponse = await fetch(process.env.EXPRESS_URL + 'auth/register', {
+		const registerResponse = await fetch(serverUrl + 'auth/register', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),

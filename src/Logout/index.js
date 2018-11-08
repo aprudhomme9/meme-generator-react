@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Label, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
-
+import serverUrl from '../serverUrl'
 class Logout extends Component {
 		constructor(props){
 	    super(props);
@@ -13,7 +13,7 @@ class Logout extends Component {
 	handleLogout = async (e) => {
 		e.preventDefault()
 
-		const logoutResponse = await fetch(process.env.EXPRESS_URL + 'auth/logout', {
+		const logoutResponse = await fetch(serverUrl + 'auth/logout', {
 			method: 'GET',
 			credentials: 'include',
 			// body: JSON.stringify(this.state),

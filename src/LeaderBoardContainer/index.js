@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import serverUrl from '../serverUrl'
 
 class LeaderBoardContainer extends Component {
 	constructor(){
@@ -12,7 +13,7 @@ class LeaderBoardContainer extends Component {
 	}
 	fetchMemes = async () => {
 	try {
-		const currentMeme = await fetch(process.env.EXPRESS_URL+ 'api/v1/memes/popular', {credentials: 'include'});
+		const currentMeme = await fetch(serverUrl + 'api/v1/memes/popular', {credentials: 'include'});
 		const parsedMeme = await currentMeme.json();
 		console.log(parsedMeme, 'parsed memes')
 		return parsedMeme;

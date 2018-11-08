@@ -5,7 +5,7 @@ import MemeList from '../MemeList';
 import Login from '../Login'
 
 import Search from '../Search'
-
+import serverUrl from '../serverUrl'
 
 // const mgUserName = 'aprudhomme';
 // const mgPassword = 'Jaglax19';
@@ -24,10 +24,9 @@ class MemeContainer extends Component {
 		const userSearch = search;
 		console.log(userSearch, '<----user search');
 		try {
-			const images = await fetch(process.env.EXPRESS_URL + 'api/v1/images/' + userSearch, {
+			const images = await fetch(serverUrl + 'api/v1/images/' + userSearch, {
 				credentials: 'include'
 			});
-			console.log(parsedImages, '<---parsedImages');
 			const parsedImages = await images.json();
 
 			return parsedImages
@@ -45,7 +44,6 @@ class MemeContainer extends Component {
 		})
 	}
 	render(){	
-		console.log(this.state.images, '<---images');
 		return(
 			<div>
 				<Search getResults={this.getResults} />
