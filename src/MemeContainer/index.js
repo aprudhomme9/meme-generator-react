@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
+
 import MemeList from '../MemeList';
-<<<<<<< HEAD
+
 import Login from '../Login'
 
-=======
 import Search from '../Search'
->>>>>>> 93c52496705a0c9b93e7361a4e05473d42fede08
+
 
 // const mgUserName = 'aprudhomme';
 // const mgPassword = 'Jaglax19';
@@ -48,7 +48,7 @@ class MemeContainer extends Component {
 		console.log(this.state.images, '<---images');
 		return(
 			<div>
-				<Search getResults={this.getResults} />
+				<Search className="searchmeme" getResults={this.getResults} />
 				<MemeList images={this.state.images} />
 
 			</div>

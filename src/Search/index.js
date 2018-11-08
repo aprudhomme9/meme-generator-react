@@ -24,8 +24,8 @@ class Search extends Component {
 
 			<div>
 				<Form onSubmit={this.handleSubmit}>
-          			<Form.Input onChange={this.handleChange} type="text" value={this.state.search} name='search' placeholder="Fetch The GIFs"/>
-          			<Button type="submit">Search</Button>
+          			<Form.Input className="search"onChange={this.handleChange} type="text" value={this.state.search} name='search' placeholder="Fetch The GIFs"/>
+          			<div><Button className="searchmeme" type="submit">Search</Button></div>
       			</Form>
 			</div>
 			

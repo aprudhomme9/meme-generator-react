@@ -21,3 +21,6 @@ code {
     transform: rotate(45deg);
     cursor: pointer;
 }
+input {
+  color: #96ceb4;
+}

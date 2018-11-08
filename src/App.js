@@ -37,6 +37,7 @@ class App extends Component {
       <div className="App">
         <HeaderApp />
         <Switch>
+          <Route exact path="/register" component={Register}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/home" component={MemeContainer}/>
           <Route exact path="/leaderboard" component={LeaderBoardContainer}/>
