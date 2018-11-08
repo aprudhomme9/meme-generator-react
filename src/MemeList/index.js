@@ -27,6 +27,7 @@ class MemeList extends Component{
 		})
 	}
 	render(){
+		console.log(this.props.images);
 		const generatorList = this.props.images.map((image, i) => {
 			return (
 					<img id={image.generatorID} name={image.imageID} onClick={this.handleClick} key={i} height='400' width='400' src={image.imageUrl} />		

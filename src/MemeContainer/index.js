@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import MemeList from '../MemeList';
+<<<<<<< HEAD
 import Login from '../Login'
 
+=======
+import Search from '../Search'
+>>>>>>> 93c52496705a0c9b93e7361a4e05473d42fede08
 
 // const mgUserName = 'aprudhomme';
 // const mgPassword = 'Jaglax19';
@@ -16,12 +20,14 @@ class MemeContainer extends Component {
 			images: []
 		}
 	}
-	fetchImages = async () => {
+	fetchImages = async (search) => {
+		const userSearch = search;
+		console.log(userSearch, '<----user search');
 		try {
-			const images = await fetch('http://localhost:5000/api/v1/images', {
+			const images = await fetch('http://localhost:5000/api/v1/images/' + userSearch, {
 				credentials: 'include'
 			});
-
+			console.log(parsedImages, '<---parsedImages');
 			const parsedImages = await images.json();
 
 			return parsedImages
@@ -29,17 +35,20 @@ class MemeContainer extends Component {
 			return err
 		}
 	}
-	componentDidMount(){
-		this.fetchImages().then((images) => {
+	getResults = (query) => {
+		console.log(query, '<--Query');
+		const userQuery = query;
+		this.fetchImages(userQuery).then((images) => {
 			this.setState({
 				images: images.data
 			})
 		})
 	}
 	render(){	
+		console.log(this.state.images, '<---images');
 		return(
 			<div>
-				<h1>DANK</h1>
+				<Search getResults={this.getResults} />
 				<MemeList images={this.state.images} />
 
 			</div>
