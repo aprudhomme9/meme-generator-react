@@ -60,10 +60,12 @@ class UserProfile extends Component {
 
 		this.fetchUser().then((user) => {
 			console.log(user);
-			if(user.data._id === this.props.user._id){
-				this.setState({
-					canVote: false
-				})
+			if(user.data !== null){
+				if(user.data._id === this.props.user._id){
+					this.setState({
+						canVote: false
+					})
+				}
 			}
 		})
 

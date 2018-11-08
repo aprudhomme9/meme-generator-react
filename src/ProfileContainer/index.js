@@ -49,9 +49,13 @@ class ProfileContainer extends Component {
 	}
 	componentDidMount(){
 		this.fetchUser().then((user) => {
-			this.setState({
-				user: user.data.username
-			})
+			if(user.data == null){
+				this.props.history.push('/login')
+			} else {
+				this.setState({
+					user: user.data.username
+				})
+			}	
 		})
 		this.fetchMemes().then((memes) => {
 			this.setState({
