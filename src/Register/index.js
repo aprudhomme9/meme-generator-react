@@ -13,7 +13,7 @@ class Register extends Component {
 	handleRegister = async (e) => {
 		e.preventDefault()
 
-		const registerResponse = await fetch('http://localhost:5000/auth/register', {
+		const registerResponse = await fetch(process.env.EXPRESS_URL + 'auth/register', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),

@@ -13,7 +13,7 @@ class Login extends Component {
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
-		const loginResponse = await fetch('http://localhost:5000/auth', {
+		const loginResponse = await fetch(process.env.EXPRESS_URL + 'auth', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),

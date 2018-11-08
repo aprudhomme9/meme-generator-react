@@ -13,7 +13,7 @@ class Logout extends Component {
 	handleLogout = async (e) => {
 		e.preventDefault()
 
-		const logoutResponse = await fetch('http://localhost:5000/auth/logout', {
+		const logoutResponse = await fetch(process.env.EXPRESS_URL + 'auth/logout', {
 			method: 'GET',
 			credentials: 'include',
 			// body: JSON.stringify(this.state),

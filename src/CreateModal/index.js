@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import { Modal, Form, Button, Label, Header } from 'semantic-ui-react';
 
-const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
+const apiKey = process.env.API_KEY;
 
 class CreateModal extends Component{
 	constructor(){
@@ -41,7 +41,7 @@ class CreateModal extends Component{
 
 			const parsedMeme = await meme.json();
 
-			const addMeme = await fetch('http://localhost:5000/api/v1/memes', {
+			const addMeme = await fetch(process.env.EXPRESS_URL + 'api/v1/memes', {
 				method: 'POST',
 				body: JSON.stringify({
 					imgUrl: parsedMeme.result.instanceImageUrl,
@@ -63,7 +63,7 @@ class CreateModal extends Component{
 	}
 	getUser = async () => {
 		try {
-			const user = await fetch('http://localhost:5000/api/v1/user', {credentials: 'include'});
+			const user = await fetch(process.env.EXPRESS_URL + 'api/v1/user', {credentials: 'include'});
 
 			// console.log(parsedUser, '<--parsed user');
 			const parsedUser = user.json();
