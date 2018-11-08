@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import CreateModal from '../CreateModal'
+
+import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
+
 const apiKey = process.env.API_KEY;
 class MemeList extends Component{
 	constructor(){
@@ -37,13 +40,19 @@ class MemeList extends Component{
 		return(
 			<div>
 				<CreateModal imageId={this.state.imageId} generatorId={this.state.generatorId} handleSubmit={this.handleSubmit} closeModal={this.closeModal} image={this.state.imageUrl} open={this.state.showModal} />
-				<ul>
-					{generatorList}	
-				</ul>
+      		<Segment container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+						{generatorList}	
+					</Segment>
 			</div>
 		)
 	}
 }
+				
+        	
+							
+						
+		    	
+		    	
 
 
 

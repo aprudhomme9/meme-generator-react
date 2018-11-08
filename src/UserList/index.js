@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import {Button} from 'semantic-ui-react';
+
+import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import serverUrl from '../serverUrl.js'
+
 
 class UserList extends Component{
 	constructor(){
@@ -34,11 +36,17 @@ class UserList extends Component{
 	}
 	render(){
 		const users = this.state.users.map((user, i) => {
-			return <Button onClick={this.handleClick} id={user._id} key={i}>{user.username}</Button>
+			return <div><Segment className="userlist"cursor="pointer" color="olive"onClick={this.handleClick} id={user._id} key={i}>{user.username}</Segment></div>
 		})
 		return(
 			<div>
-				{users}
+				<Grid textAlign='center' vertical='middle' style={{height: '100%'}}>
+        		<Grid.Column style={{maxWidth: 450}}>
+	        		<Segment>
+								{users}
+							</Segment>
+	    		</Grid.Column>
+	    	</Grid>	
 			</div>
 			)
 	}
