@@ -105,17 +105,7 @@ class ProfileContainer extends Component {
     	console.log(this.state.memes);
     	const memes = this.state.memes.map((meme, i) => {
     		return (
-// <<<<<<< HEAD
-// 		    	<div className='meme'>
-//     				<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
-//         			<Grid.Column style={{maxWidth: 450}}>
-// 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-// 		    				<Button  fluid icon="arrow up"key={i} id={meme._id} color='green' onClick={this.upvote}></Button>
-// 		    				<Button fluid icon="arrow down"id={meme._id} color='red' onClick={this.downvote}></Button>
-// 		    			</Grid.Column>
-// 		    		</Grid>
-// 		    	</div>
-// =======
+
     			<div className='meme'>
     			<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>

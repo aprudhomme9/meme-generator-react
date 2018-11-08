@@ -10,7 +10,7 @@ import Login from '../Login'
 
 class HeaderApp extends Component{
 	render(){
-		// console.log(this.state.isLoggedIn, 'ISLOGGED')
+		
 		return(
 			<Header>
 				<nav>

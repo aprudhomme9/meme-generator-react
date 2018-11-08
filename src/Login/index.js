@@ -23,8 +23,7 @@ class Login extends Component {
 		})
 		const parsedResponse = await loginResponse.json()
 		if(parsedResponse.data){
-			console.log('successful')
-			console.log(this.state)
+
 			this.props.history.push('/home')
 		}
 	}
@@ -39,7 +38,7 @@ class Login extends Component {
 		})
 	}
     render(){
-    	console.log(this.state.isLoggedIn)
+
         return(
         	<div>
         	<Register />

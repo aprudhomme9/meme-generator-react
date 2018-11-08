@@ -24,7 +24,7 @@ class UserProfile extends Component {
 	}
 	fetchMemes = async () => {
 		const userId = this.props.user._id;
-		console.log(userId, '<---USER ID');
+
 		try {
 			const fetchedMemes = await fetch(process.env.EXPRESS_URL + 'api/v1/memes/profile/' + this.props.user._id, {credentials: 'include'});
 			console.log(fetchedMemes, '<---GRABBING THE MEMES');
