@@ -17,7 +17,7 @@ import {Route, Switch} from 'react-router-dom'
 const apiKey = '53ab19f9-5502-408b-b645-284c4394a5a9';
 const Our404 = () => {
   return (
-    <div>No memes for you</div>
+    <div>NO MEMES FOR YOU</div>
     )
 }
 
@@ -28,6 +28,7 @@ class App extends Component {
 
 		this.state = {
 			memes: []
+    
 		}
 	}
   render() {

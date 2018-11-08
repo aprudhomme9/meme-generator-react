@@ -20,6 +20,7 @@ class Register extends Component {
 			headers: {
 				'Content-Type': 'application/json'
 			}
+			
 		})
 		const parsedResponse = await registerResponse.json()
 		if(parsedResponse.data){

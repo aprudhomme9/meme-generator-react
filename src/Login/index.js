@@ -7,12 +7,12 @@ class Login extends Component {
 	    super();
 	    this.state = {
 	        username: '',
-	        password: ''
+	        password: '',
+	        isLoggedIn: false
 	    }
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
-
 		const loginResponse = await fetch('http://localhost:5000/auth', {
 			method: 'POST',
 			credentials: 'include',
@@ -28,21 +28,27 @@ class Login extends Component {
 			this.props.history.push('/home')
 		}
 	}
+	checkLoginStatus = (e) => {
+		this.setState({
+			isLoggedIn: true
+		})
+	}
 	handleChange = (e) => {
 		this.setState({
 			[e.currentTarget.name]: e.currentTarget.value
 		})
 	}
     render(){
+    	console.log(this.state.isLoggedIn)
         return(
         	<div>
-        	<Register />
+        	<Register isLoggedIn={this.state.isLoggedIn}/>
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
 	        		<h3>Already have an account?</h3>
 	        		<h2>Login</h2>
-	            	<Form onSubmit={this.handleLogin}>
+	            	<Form onSubmit={this.handleLogin} onClick={this.checkLoginStatus}>
 		            	<Label>Username</Label>
 		            	<Form.Input type="text" name="username" onChange={this.handleChange}/>
 		            	<Label>Password</Label>
