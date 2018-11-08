@@ -42,7 +42,7 @@ class Login extends Component {
     	console.log(this.state.isLoggedIn)
         return(
         	<div>
-        	<Register isLoggedIn={this.state.isLoggedIn}/>
+        	<Register />
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>

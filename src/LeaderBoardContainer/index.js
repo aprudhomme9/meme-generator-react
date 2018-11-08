@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class LeaderBoardContainer extends Component {
 	constructor(){
@@ -26,18 +27,29 @@ componentDidMount(){
 	})
 }
 	render(){
+		// const popularMemesUser = this.state.popularMemes.user.map((user,i) => {
+		// 	return user.user
+		// })
 		const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
 			return b.upvotes - a.upvotes
 		})
 		const popularMemeList = this.state.popularMemes.map((image, i) => {
 		
-		console.log(this.state.popularMemes)
+		console.log(this.state.popularMemes, 'USERS')
 
 		return (
 			<div>
-				<img width='400' height='400' key={i} src={image.imgUrl}/>
-    				<p>Danks: {image.upvotes}</p>
-    				<p>Whacks: {image.downvotes}</p>
+				<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+        		<Grid.Column style={{maxWidth: 450}}>
+	        		<Segment>
+	        			<h1>{image.user.username}</h1>
+								<img width='400' height='400' key={i} src={image.imgUrl}/>
+				    				<h3>Danks: {image.upvotes}</h3>
+				    				<h3>Whacks: {image.downvotes}</h3>
+				    				<br/>
+				    			</Segment>
+				    		</Grid.Column>
+				    	</Grid>		
     	</div>
 		)
 	})
