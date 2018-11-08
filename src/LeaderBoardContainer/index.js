@@ -6,7 +6,8 @@ class LeaderBoardContainer extends Component {
 	constructor(){
 	    super();
 	    this.state = {
-	        popularMemes: []
+	        popularMemes: [],
+	        sortBy: 'hot'
 	    }
 	}
 	fetchMemes = async () => {
@@ -19,6 +20,12 @@ class LeaderBoardContainer extends Component {
 		
 	}
 }
+handleSort = (e) => {
+	console.log(e.currentTarget.name);
+	this.setState({
+		sortBy: e.currentTarget.name
+	})
+}
 componentDidMount(){
 	this.fetchMemes().then((meme) => {
 		this.setState({
@@ -30,9 +37,20 @@ componentDidMount(){
 		// const popularMemesUser = this.state.popularMemes.user.map((user,i) => {
 		// 	return user.user
 		// })
-		const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
-			return b.upvotes - a.upvotes
-		})
+		if(this.state.sortBy == 'hot'){
+			const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
+				return ((b.upvotes-b.downvotes)/(b.upvotes + b.downvotes)) - ((a.upvotes-a.downvotes)/(a.upvotes+a.downvotes))
+			})
+		} else if (this.state.sortBy == 'dank'){
+			const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
+				return (b.upvotes) - (a.upvotes)
+			})
+		} else {
+			const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
+				return (b.downvotes) - (a.downvotes)
+			})
+		}
+		
 		const popularMemeList = this.state.popularMemes.map((image, i) => {
 		
 		console.log(this.state.popularMemes, 'USERS')
@@ -57,6 +75,9 @@ componentDidMount(){
 	    return(
 	    	<div>
 	        <h1>Top Memes</h1>
+	        <Button name='hot' onClick={this.handleSort}>Hot</Button>
+			<Button name='dank' onClick={this.handleSort}>Dank</Button>
+			<Button name='whack' onClick={this.handleSort}>Whack</Button>
 	        {popularMemeList}
 	        </div>
         )

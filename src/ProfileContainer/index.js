@@ -49,9 +49,13 @@ class ProfileContainer extends Component {
 	}
 	componentDidMount(){
 		this.fetchUser().then((user) => {
-			this.setState({
-				user: user.data.username
-			})
+			if(user.data == null){
+				this.props.history.push('/login')
+			} else {
+				this.setState({
+					user: user.data.username
+				})
+			}	
 		})
 		this.fetchMemes().then((memes) => {
 			this.setState({
@@ -117,8 +121,8 @@ class ProfileContainer extends Component {
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-		    				<p>Danks: {meme.upvotes}</p>
-		    				<p>Whacks: {meme.downvotes}</p>
+		    				<h3>Danks: {meme.upvotes}</h3>
+		    				<h4>Whacks: {meme.downvotes}</h4>
 		    				<Button id={meme._id} color='blue' onClick={this.deleteMeme}>Delete</Button>
   						</Segment>
 	    		</Grid.Column>

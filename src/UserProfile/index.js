@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
+import { Modal, Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 
 class UserProfile extends Component {
 	constructor(){
@@ -7,8 +7,20 @@ class UserProfile extends Component {
 
 		this.state = {
 			memes: [],
-			memeToEdit: ''
+			memeToEdit: '',
+			canVote: true
 		}
+	}
+	fetchUser = async () => {
+		try {
+			const currentUser = await fetch('http://localhost:5000/api/v1/user', {credentials: 'include'});
+			const parsedUser = await currentUser.json();
+
+			return parsedUser;	
+		} catch (err) {
+		
+		}
+		
 	}
 	fetchMemes = async () => {
 		const userId = this.props.user._id;
@@ -45,10 +57,22 @@ class UserProfile extends Component {
 				memes: memes.data
 			})
 		})
-		console.log(this.state.memes, '<--memes in state');
+
+		this.fetchUser().then((user) => {
+			console.log(user);
+			if(user.data !== null){
+				if(user.data._id === this.props.user._id){
+					this.setState({
+						canVote: false
+					})
+				}
+			}
+		})
+
 	}
 	upvote = async (e) => {
 		e.preventDefault()
+		console.log(this.state.canVote, 'can vote?');
 		const memeToEdit = this.state.memes.find((meme) => {
 			return meme._id === e.currentTarget.id
 			})
@@ -60,11 +84,15 @@ class UserProfile extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
-		this.fetchMemes().then((memes) => {
-			this.setState({
-				memes: memes.data
+		if(this.state.canVote){
+			this.fetchMemes().then((memes) => {
+				this.setState({
+					memes: memes.data
+
+				})
 			})
-		})
+		}
+		
 	}
 	downvote = async (e) => {
 		e.preventDefault();
@@ -79,16 +107,16 @@ class UserProfile extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
-		this.fetchMemes().then((memes) => {
-			console.log(memes, '<---grabbing the memes');
-			this.setState({
-				memes: memes.data
+		if(this.state.canVote){
+			this.fetchMemes().then((memes) => {
+				this.setState({
+					memes: memes.data
+
+				})
 			})
-		})
+		}
 	}
     render(){
-    	console.log(this.props.user);
-    	console.log(this.state.memes);
     	const memes = this.state.memes.map((meme, i) => {
     		return (
     			<div className='meme'>
@@ -96,10 +124,14 @@ class UserProfile extends Component {
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
-		    				<p>Danks: {meme.upvotes}</p>
-		    				<p>Whacks: {meme.downvotes}</p>
-		    				<Button key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
-		    				<Button id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
+		    				<h3>Danks: {meme.upvotes}</h3>
+		    				<h4>Whacks: {meme.downvotes}</h4>
+		    				
+		    					<Button hidden={this.state.showUpVote} key={i} id={meme._id} color='green' onClick={this.upvote}>Dank</Button>
+		    				
+		    				
+		    					<Button hidden={this.state.showDownVote} id={meme._id} color='red' onClick={this.downvote}>Whack</Button>
+
   						</Segment>
 	    		</Grid.Column>
 	    	</Grid>	
