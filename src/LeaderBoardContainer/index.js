@@ -44,11 +44,11 @@ componentDidMount(){
 			})
 		} else if (this.state.sortBy == 'Dank'){
 			const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
-				return (b.upvotes) - (a.upvotes)
+				return (((b.upvotes)/(b.upvotes + b.downvotes))*b.upvotes - ((a.upvotes)/(a.upvotes + a.downvotes))*a.upvotes)
 			})
 		} else {
 			const popularMemeListSorted = this.state.popularMemes.sort((a, b) => {
-				return (b.downvotes) - (a.downvotes)
+				return ((b.downvotes)/(b.upvotes + b.downvotes)) - ((a.downvotes)/(a.upvotes + a.downvotes))
 			})
 		}
 		
