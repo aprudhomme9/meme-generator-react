@@ -122,7 +122,7 @@ class UserProfile extends Component {
     			<div className='meme'>
     			<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         		<Grid.Column style={{maxWidth: 450}}>
-	        		<Segment>
+	        		<Segment key={i}>
 		    				<img width='400' height='400' key={meme._id} src={meme.imgUrl}/>
 		    				<h3>Danks: {meme.upvotes}</h3>
 		    				<h4>Whacks: {meme.downvotes}</h4>
