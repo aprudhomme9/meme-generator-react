@@ -76,9 +76,9 @@ componentDidMount(){
 	    return(
 	    	<div>
 	        <h1>All Time {this.state.sortBy}</h1>
-	        <Button name='Hot' onClick={this.handleSort}>Hot</Button>
-			<Button name='Dank' onClick={this.handleSort}>Dank</Button>
-			<Button name='Whack' onClick={this.handleSort}>Whack</Button>
+	        <Button color='red' name='Hot' onClick={this.handleSort}>Hot</Button>
+			<Button color='green' name='Dank' onClick={this.handleSort}>Dank</Button>
+			<Button color='black'name='Whack' onClick={this.handleSort}>Whack</Button>
 	        {popularMemeList}
 	        </div>
         )

@@ -24,8 +24,8 @@ class Search extends Component {
 
 			<div>
 				<Form onSubmit={this.handleSubmit}>
-					<h1>Search for Dank Meme Generators and Impress Your Friends!!</h1>
-          			<Form.Input onChange={this.handleChange} type="text" value={this.state.search} name='search' placeholder="e.g. 'spongegar',  'doge',  'skeptical 3rd world kid'"/>
+					<h2>Dank Memes 4 U...</h2>
+          			<input className='searchBar' onChange={this.handleChange} type="text" value={this.state.search} name='search' placeholder="e.g. 'spongegar',  'doge',  'skeptical 3rd world kid'"/>
           			<Button type="submit">Search</Button>
       			</Form>
 			</div>

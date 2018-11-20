@@ -141,7 +141,7 @@ class UserProfile extends Component {
     	
         return(
         	<div>
-        		<h1>{this.props.user.username}'s Profile</h1>
+        		<h1>{this.props.user.username}'s MemeStream</h1>
             	{memes}
         	</div>
             

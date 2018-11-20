@@ -13,6 +13,7 @@ class HeaderApp extends Component{
 		
 		return(
 			<Header>
+				<h1>MemeStream</h1>
 				<nav>
 				<Grid columns={1} divided textAlign='left' style={{ height: '100%' }} verticalAlign='top' stackable>
           <Grid.Column>

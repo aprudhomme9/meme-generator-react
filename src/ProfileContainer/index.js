@@ -22,6 +22,11 @@ class ProfileContainer extends Component {
 			
 		}
 	}
+	changeMessage = (message) => {
+		this.setState({
+			message: message
+		})
+	}
 	fetchUser = async () => {
 		try {
 			const currentUser = await fetch(serverUrl + 'api/v1/user', {credentials: 'include'});
@@ -50,6 +55,7 @@ class ProfileContainer extends Component {
 	componentDidMount(){
 		this.fetchUser().then((user) => {
 			if(user.data == null){
+				// this.changeMessage('Please Log In')
 				this.props.history.push('/login')
 			} else {
 				this.setState({
@@ -123,7 +129,7 @@ class ProfileContainer extends Component {
     	
         return(
         	<div>
-        		<h1>{this.state.user}'s Profile</h1>
+        		<h1>{this.state.user}'s MemeStream</h1>
             	{memes}
         	</div>
             
