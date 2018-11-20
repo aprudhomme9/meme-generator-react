@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import Register from '../Register'
-<<<<<<< HEAD
+
 import serverUrl from '../serverUrl.js'
-=======
-import serverUrl from '../serverUrl'
->>>>>>> 5e1d39c8f5080d89fb4935b417c9f99bc7c42dfb
+
 
 class Login extends Component {
 	constructor(){
@@ -18,13 +16,9 @@ class Login extends Component {
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
-<<<<<<< HEAD
-		const loginResponse = await fetch(serverUrl + 'auth', {
-=======
 
 		const loginResponse = await fetch(serverUrl + 'auth', {
 
->>>>>>> 5e1d39c8f5080d89fb4935b417c9f99bc7c42dfb
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),
