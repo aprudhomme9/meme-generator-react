@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+
 import serverUrl from '../serverUrl.js'
+
 
 class LeaderBoardContainer extends Component {
 	constructor(){

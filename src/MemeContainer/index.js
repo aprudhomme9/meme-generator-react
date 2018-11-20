@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+
 import MemeList from '../MemeList';
 
 import Login from '../Login'
 
 import Search from '../Search'
+
 import serverUrl from '../serverUrl.js'
 
 const apiKey = process.env.API_KEY;

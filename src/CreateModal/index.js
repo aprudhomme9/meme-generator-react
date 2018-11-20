@@ -6,6 +6,11 @@ import serverUrl from '../serverUrl.js'
 const apiKey = process.env.API_KEY;
 
 
+import serverUrl from '../serverUrl'
+
+const apiKey = process.env.API_KEY;
+
+
 class CreateModal extends Component{
 	constructor(){
 		super();
@@ -73,6 +78,7 @@ class CreateModal extends Component{
 			return parsedUser
 		} catch (err) {
 			
+
 		}
 	}
 	componentDidMount(){
