@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #ffeead;
 }
 
 .App-logo {
@@ -19,9 +20,14 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #ff6f69;
 }
-
+a {
+  color: #ff6f69;
+}
+input {
+  background-color: #96ceb4;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -30,6 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
 
 .searchBar {
     width: 130px;
@@ -41,3 +48,4 @@
 .searchBar:focus {
     width: 100%;
 }
+

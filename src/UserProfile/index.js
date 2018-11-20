@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
+
 import serverUrl from '../serverUrl';
+
 class UserProfile extends Component {
 	constructor(){
 		super()

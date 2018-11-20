@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
 import Register from '../Register'
+
 import serverUrl from '../serverUrl.js'
+
 
 class Login extends Component {
 	constructor(){
@@ -20,7 +22,9 @@ class Login extends Component {
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
+
 		const loginResponse = await fetch(serverUrl + 'auth', {
+
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),
@@ -53,6 +57,7 @@ class Login extends Component {
 
         return(
         	<div>
+
         	<h4>{this.state.message}</h4>
         	<Register />
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>

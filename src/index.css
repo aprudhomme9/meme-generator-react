@@ -23,6 +23,7 @@ code {
     cursor: pointer;
 }
 
+
 .userlist {
   cursor: pointer;
 }
@@ -45,4 +46,5 @@ input[type='text'] {
 /* When the input field gets focus, change its width to 100% */
 .searchBar:focus {
     width: 100%;
+
 }

@@ -27,6 +27,7 @@ class Search extends Component {
 					<h2>Dank Memes 4 U...</h2>
           			<input className='searchBar' onChange={this.handleChange} type="text" value={this.state.search} name='search' placeholder="e.g. 'spongegar',  'doge',  'skeptical 3rd world kid'"/>
           			<Button type="submit">Search</Button>
+
       			</Form>
 			</div>
 

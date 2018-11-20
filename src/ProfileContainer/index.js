@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Label, Button, Input, Grid, Segment } from 'semantic-ui-react'
+
 import serverUrl from '../serverUrl.js'
+
 class ProfileContainer extends Component {
 	constructor(){
 		super()
