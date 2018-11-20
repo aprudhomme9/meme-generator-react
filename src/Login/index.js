@@ -11,15 +11,20 @@ class Login extends Component {
 	    this.state = {
 	        username: '',
 	        password: '',
-	        isLoggedIn: false
+	        isLoggedIn: false,
+	        message: 'Please Log In'
 	    }
+	}
+	changeMessage = (message) => {
+		this.setState({
+			message: message
+		})
 	}
 	handleLogin = async (e) => {
 		e.preventDefault()
 
 		const loginResponse = await fetch(serverUrl + 'auth', {
 
-		const loginResponse = await fetch(serverUrl + 'auth', {
 
 			method: 'POST',
 			credentials: 'include',
@@ -28,27 +33,34 @@ class Login extends Component {
 				'Content-Type': 'application/json'
 			}
 		})
+		console.log(loginResponse, 'LOG IN RESPONSE');
 		const parsedResponse = await loginResponse.json()
-		if(parsedResponse.data){
-
-			this.props.history.push('/home')
+		console.log(parsedResponse, 'RESPONSE');
+		if(parsedResponse.message === 'Success'){
+			this.props.history.push('/home');
+		} else {
+			this.changeMessage('Username or Password Incorrect')
 		}
 	}
 	checkLoginStatus = (e) => {
 		this.setState({
-			isLoggedIn: true
+			isLoggedIn: true,
+			message: ''
 		})
 	}
 	handleChange = (e) => {
 		this.setState({
 			[e.currentTarget.name]: e.currentTarget.value
 		})
+		// this.changeMessage('ChANGinG')
 	}
     render(){
 
         return(
         	<div>
-        	
+
+        	<h4>{this.state.message}</h4>
+        	<Register />
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
         	<Register />
         		<Grid.Column style={{maxWidth: 450}}>

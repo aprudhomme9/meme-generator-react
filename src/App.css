@@ -36,12 +36,16 @@ input {
     transform: rotate(360deg);
   }
 }
-.search {
-  background-color: #96ceb4;
+
+
+.searchBar {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
-.userlist {
-  cursor: pointer;
+
+/* When the input field gets focus, change its width to 100% */
+.searchBar:focus {
+    width: 100%;
 }
-.searchmeme {
-  background-color: #88d8b0;
-}
+
