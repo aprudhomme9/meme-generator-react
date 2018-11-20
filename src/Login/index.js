@@ -19,6 +19,8 @@ class Login extends Component {
 
 		const loginResponse = await fetch(serverUrl + 'auth', {
 
+		const loginResponse = await fetch(serverUrl + 'auth', {
+
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state),
@@ -48,6 +50,7 @@ class Login extends Component {
         	<div>
         	
         	<Grid container columns={1} textAlign='center' vertical='middle' style={{height: '100%'}}>
+        	<Register />
         		<Grid.Column style={{maxWidth: 450}}>
 	        		<Segment>
 	        		<h3>Already have an account?</h3>
